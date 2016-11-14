@@ -20,7 +20,7 @@ def track_keywords(apikeys, keywords, output):
 
     try:
         # stream.statuses.filter(track=keywords)
-        stream.statuses.filter(language="ar")
+        stream.statuses.filter(track=keywords, language="ar")
     except:
         raise
     finally:
