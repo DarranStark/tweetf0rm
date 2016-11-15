@@ -65,17 +65,20 @@ if __name__ == "__main__":
                 country_trend = twitter_api.get_place_trends(id="23424740")
                 print(json.dumps(town_trend))
                 print(json.dumps(country_trend))
-                for trend in town_trend['trends']:
+                for trend in town_trend[0]['trends']:
                     keywords.append(trend['name'])
-                for trend in country_trend['trends']:
+                for trend in country_trend[0]['trends']:
                     keywords.append(trend['name'])
             if language is None:
                 worldwide_trend = twitter_api.get_place_trends(id="1")
                 print(json.dumps(worldwide_trend))
-                for trend in worldwide_trend['trends']:
+                for trend in worldwide_trend[0]['trends']:
                     keywords.append(trend['name'])
             keywords_set = set(keywords)
             keywords = list(keywords_set)
+
+            print("keywords: ")
+            print(json.dumps(keywords))
 
             try:
                 apikeys = apikeys_config.get(apikeys_config.keys()[randint(0, len(apikeys_config) - 1)], None)
