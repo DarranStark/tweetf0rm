@@ -76,6 +76,8 @@ if __name__ == "__main__":
                     keywords.append(trend['name'])
             keywords_set = set(keywords)
             keywords = list(keywords_set)
+            if len(keywords) > 400:
+                keywords = keywords[len(keywords)-400:]
 
             print("keywords: ")
             print(json.dumps(keywords))
